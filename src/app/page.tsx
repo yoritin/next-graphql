@@ -1,6 +1,7 @@
 'use client'
 import styles from './page.module.css'
 import { gql, useQuery } from '@apollo/client'
+import { Plant } from '@/generated/graphql'
 
 const PLANTS = gql`
   query {
@@ -15,7 +16,7 @@ const Plants = () => {
   const { loading, error, data } = useQuery(PLANTS)
   if (loading) return <>loading</>
   if (error) return <>error</>
-  return data.plants.map((plant: any) => {
+  return data.plants.map((plant: Plant) => {
     return (
       <div key={plant.name}>
         <p>{plant.name}</p>

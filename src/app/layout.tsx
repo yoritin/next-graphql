@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ApolloProvider from '../../components/ApolloProvider'
+import ApolloProvider from '@/components/ApolloProvider'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
