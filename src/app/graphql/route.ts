@@ -52,11 +52,45 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  introspection: true, // TODO 開発環境のみでtrueにする
 })
 
+let serverStartPromise: Promise<void> | null = null
+
 export async function POST(request: Request): Promise<NextResponse> {
+  if (!serverStartPromise) {
+    serverStartPromise = server.start()
+  }
+  await serverStartPromise
+
   const json = await request.json()
   const res = await server.executeOperation({ query: json.query })
   assert(res.body.kind === 'single')
   return NextResponse.json(res.body.singleResult)
+}
+
+export async function GET(_request: Request) {
+  return new Response(
+    `
+    <!DOCTYPE html>
+    <html>
+      <body style="margin: 0; overflow-x: hidden; overflow-y: hidden;">
+        <div id="sandbox" style="height:100vh; width:100vw;"></div>
+        <script src="https://embeddable-sandbox.cdn.apollographql.com/_latest/embeddable-sandbox.umd.production.min.js"></script>
+        <script>
+          new window.EmbeddedSandbox({
+            target: "#sandbox",
+            initialEndpoint: "/graphql",
+          });
+        </script>
+      </body>
+    </html>
+    `,
+    {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/html',
+      },
+    },
+  )
 }
