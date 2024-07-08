@@ -1,14 +1,34 @@
 {
   "name": "next-graphql",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"pnpm run dev-backend\" \"pnpm run dev-frontend\"",
-    "dev-backend": "cd backend && pnpm run dev",
-    "dev-frontend": "cd frontend && pnpm run dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "@apollo/server": "^4.10.4",
+    "next": "14.2.4",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.10.5",
+    "@apollo/react-hooks": "^4.0.0",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.7",
+    "@graphql-codegen/typescript-resolvers": "^4.1.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "apollo-boost": "^0.4.9",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "graphql": "^16.8.2",
+    "prettier": "^3.3.2",
+    "typescript": "^5"
   }
 }
