@@ -1,8 +1,7 @@
 'use client'
-import React from 'react'
 import styles from './page.module.css'
 import { gql, useQuery } from '@apollo/client'
-import { Plant } from '../generated/graphql'
+import { Plant } from '@/generated/graphql'
 
 const PLANTS = gql`
   query {
