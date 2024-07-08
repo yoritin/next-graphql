@@ -1,7 +1,7 @@
 import assert from 'node:assert'
 import { ApolloServer } from '@apollo/server'
 import { NextResponse } from 'next/server'
-import { Plant } from '@/generated/graphql'
+import { Plant } from '../../generated/graphql'
 
 const plants: Plant[] = [
   {

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { ReactNode } from 'react'
-import ApolloProvider from '@/components/ApolloProvider'
+import React, { ReactNode } from 'react'
+import ApolloProvider from '../components/ApolloProvider'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
