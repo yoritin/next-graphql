@@ -2,7 +2,8 @@ import type { CodegenConfig } from '@graphql-codegen/cli'
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'http://localhost:3000/graphql',
+  schema:
+    process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT || 'http://localhost:3000/graphql',
   hooks: {
     afterAllFileWrite: 'prettier --write',
   },
