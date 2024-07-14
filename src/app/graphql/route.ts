@@ -52,7 +52,7 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: true, // TODO 開発環境のみでtrueにする
+  introspection: process.env.NODE_ENV === 'development',
 })
 
 let serverStartPromise: Promise<void> | null = null
